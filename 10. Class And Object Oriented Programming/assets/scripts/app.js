@@ -12,9 +12,27 @@ class Product {
   }
 }
 
+class ShoppingCart {
+  items = [];
+
+  render() {
+    const cartEl = document.createElement('section');
+    cartEl.innerHTML = `
+            <h2>Total: \$${0}<h2>
+            <button> Order now </button>
+        `;
+    cartEl.className = 'cart';
+  }
+}
+
 class ProductItem {
   constructor(product) {
     this.product = product;
+  }
+
+  addToCart() {
+    console.log('Adding product to cart..');
+    console.log(this.product);
   }
 
   render() {
@@ -31,6 +49,8 @@ class ProductItem {
               </div>
             </div>
             `;
+    const addCartButton = prodEl.querySelector('button');
+    addCartButton.addEventListener('click', this.addToCart.bind(this));
     return prodEl;
   }
 }
@@ -64,5 +84,6 @@ class ProductList {
     renderHook.append(prodList);
   }
 }
+
 const productList = new ProductList();
 productList.render();
