@@ -75,16 +75,27 @@ class ProductList {
   constructor() {}
 
   render() {
-    const renderHook = document.getElementById('app');
     const prodList = document.createElement('ul');
     prodList.className = 'product-list';
     for (const prod of this.products) {
       const productItem = new ProductItem(prod);
       prodList.append(productItem.render());
     }
-    renderHook.append(prodList);
+    return prodList;
   }
 }
 
-const productList = new ProductList();
-productList.render();
+class Shop {
+  render() {
+    const renderHook = document.getElementById('app');
+
+    const cart = new ShoppingCart();
+    const productList = new ProductList();
+
+    renderHook.append(productList.render());
+    renderHook.append(cart.render());
+  }
+}
+
+const shop = new Shop();
+shop.render();
