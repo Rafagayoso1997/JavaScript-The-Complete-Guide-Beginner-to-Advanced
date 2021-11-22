@@ -22,6 +22,7 @@ class ShoppingCart {
             <button> Order now </button>
         `;
     cartEl.className = 'cart';
+    return cartEl;
   }
 }
 
